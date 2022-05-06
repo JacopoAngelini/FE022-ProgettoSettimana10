@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <form class="row gy-2 gx-3 align-items-center d-flex justify-content-center">
+    <div class="col-auto">
+      <label class="visually-hidden w-100" for="autoSizingInput">cose da fare</label>
+      <input type="text" class="form-control w-100" id="autoSizingInput" placeholder=" Cosa devi fare?"
+        [(ngModel)]="cosaDaAggiungere" name="inputDiImmissione" (click)="reset($event)">
+    </div>
+
+    <div class="col-auto">
+      <button type="button" class="btn btn-primary" (click)="aggiungi(cosaDaAggiungere)"> Aggiungi </button>
+    </div>
+  </form>
+</div>
+
+<div class="container mt-4 d-flex justify-content-center">
+  <p *ngIf="caricamento"> Caricamento lista... </p>
+  <p *ngIf="vuoto"> Sembra vuoto... Avrai pur qualcosa da fare! Aggiungilo </p>
+
+
+</div>
+
+
+<div class="container mt-2">
+  <table *ngIf="pieno" class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class='fs-5' *ngFor="let task of listaDaFare; let i = index ">
+        <td><span class="fw-bold">{{(i + 1) + '. '}}</span> {{task.title}}</td>
+        <td class="d-flex justify-content-end"><button class="btn btn-success" (click)="completato(i)"> √ </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

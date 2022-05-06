@@ -1,0 +1,21 @@
+<div class="container mt-4 d-flex justify-content-center">
+  <p *ngIf="caricamento"> Caricamento lista... </p>
+  <p *ngIf="vuoto"> Sembra vuoto... Ancora non hai fatto niente? </p>
+</div>
+
+
+<div class="container mt-2">
+  <table *ngIf="pieno" class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class='fs-5' *ngFor="let task of listaFatti; let i = index ">
+        <td><span class="fw-bold text-success">√. </span> {{task.title}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
