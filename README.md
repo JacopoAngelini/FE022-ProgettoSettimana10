@@ -1,3 +1,6 @@
+# Installazione Bootstrap
+ho installato bootstrap tramite npm, e l'ho importato nel css globale
+
 # ProgettoSettimana10
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.4.
