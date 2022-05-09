@@ -19,18 +19,20 @@ export class DaCompletareComponent implements OnInit {
   pieno = false;
 
 
-  /* visualizza un caricamento per 2 sec, recupera la lista dal service di appoggio tramite funzione poi se nella variabile di appoggio era presente qualcosa popola la lista e la visualizza altrimenti visualizza messaggio di lista vuota*/
+  /* visualizza un caricamento per 2 sec, recupera la lista dal service di appoggio tramite funzione svolta con la risoluzione di una Promise poi se nella variabile di appoggio era presente qualcosa popola la lista e la visualizza altrimenti visualizza messaggio di lista vuota*/
 
   constructor() {
     setTimeout(() => {
       this.caricamento = false;
-      this.listaDaFare = HostService.recuperaHost();
-      if (this.listaDaFare.length != 0) {
-        this.pieno = true
-      }
-      else {
-        this.vuoto = true
-      }
+      HostService.recuperaHost().then((listaDaFareHost) => {
+        this.listaDaFare = listaDaFareHost;
+        if (this.listaDaFare.length != 0) {
+          this.pieno = true
+        }
+        else {
+          this.vuoto = true
+        }
+      });
     }, 2000);
   }
 
